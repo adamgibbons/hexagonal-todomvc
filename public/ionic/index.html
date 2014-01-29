@@ -1,0 +1,44 @@
+<!doctype html>
+<html lang="en" data-framework="angularjs">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=no, minimum-scale=1.0, maximum-scale=1.0">
+        <meta name="apple-mobile-web-app-capable" content="yes" />
+        <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+        <title>AngularJS • TodoMVC</title>
+        <link rel="stylesheet" href="css/ionic.css">
+        <style>[ng-cloak] { display: none; }</style>
+    </head>
+    <body ng-app="todomvc-ionic">
+        <div ng-controller="TodoCtrl">
+            <div class="bar bar-header bar-light">
+                <h1 class="title">TODO</h1>
+                <button class="button button-clear button-positive" ng-click="newTodo.show = true">Add</button>
+            </div>
+            <content has-header="true">
+                <list id="todos" animation="fade-out">
+                    <div class="item" ng-show="newTodo.show">
+                        <form ng-submit="addTodo()">
+                            <input type="text" ng-model="newTodo.title" placeholder="What needs to be done?" autofocus>
+                        </form>
+                    </div>
+                    <item ng-repeat="todo in todos track by todo.id" item="todo" can-swipe="true" option-buttons="optionButtons">
+                        {{todo.title}}
+                    </item>
+                </list>
+            </content>
+        </div>
+        <script src="/bower_components/todomvc-common/base.js"></script>
+        <script src="/ionic/js/ionic.js"></script>
+        <script src="/bower_components/angular/angular.js"></script>
+        <script src="/bower_components/angular-animate/angular-animate.js"></script>
+        <script src="/bower_components/angular-route/angular-route.js"></script>
+        <script src="/bower_components/angular-sanitize/angular-sanitize.js"></script>
+        <script src="/bower_components/angular-touch/angular-touch.js"></script>
+        <script src="/ionic/js/angular-ui-router.js"></script>
+        <script src="/ionic/js/ionic-angular.js"></script>
+        <script src="/todomvc.js"></script>
+        <script src="/todomvc.storage.js"></script>
+        <script src="/ionic/js/app.js"></script>
+    </body>
+</html>

@@ -1,21 +1,7 @@
-(function() {
-angular.module('todomvc', ['ngRoute'])
-  .config(function($routeProvider) {
-    $routeProvider.when('/', {
-      controller: 'TodoCtrl',
-      templateUrl: 'todomvc-index.html'
-    }).when('/:status', {
-      controller: 'TodoCtrl',
-      templateUrl: 'todomvc-index.html'
-    }).otherwise({
-      redirectTo: '/'
-    })
-  })
-
+angular.module('todomvc-ionic', ['ionic'])
   .constant('storageType', 'local')
 
   .factory('storage', function($window, storageType) {
-    console.log
     var storage = {
       'local': function() { return $window.HexagonalLocalStorage('hexagonal-angular-todo') }
     }
@@ -29,7 +15,7 @@ angular.module('todomvc', ['ngRoute'])
     return todomvc;
   })
 
-  .controller('TodoCtrl', function($scope, $routeParams, todomvc) {
+  .controller('TodoCtrl', function($scope, todomvc) {
     function refresh() {
       $scope.todos = todomvc.get();
 
@@ -45,8 +31,16 @@ angular.module('todomvc', ['ngRoute'])
     // Initialize data
     refresh();
 
-    $scope.newTodo = '';
+    $scope.newTodo = {title: '', show: false};
     $scope.editedTodo = null;
+    $scope.optionButtons = [{
+      onTap: function(todo) { $scope.removeTodo(todo); },
+      type: 'button-assertive',
+      text: 'Delete'
+    }, {
+      type: 'button-balanced',
+      text: 'Complete'
+    }]
 
     // Monitor the current route for changes and adjust the filter accordingly.
     $scope.$on('$routeChangeSuccess', function () {
@@ -57,8 +51,8 @@ angular.module('todomvc', ['ngRoute'])
     });
 
     $scope.addTodo = function() {
-      todomvc.addTodo($scope.newTodo);
-      $scope.newTodo = null;
+      todomvc.addTodo($scope.newTodo.title);
+      $scope.newTodo = {title: '', show: false};
       refresh();
     }
 
@@ -88,5 +82,4 @@ angular.module('todomvc', ['ngRoute'])
       todomvc.markAll(done);
       refresh();
     }
-  })
-})()
+  });

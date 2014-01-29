@@ -1,12 +1,54 @@
 <!doctype html>
 <html>
     <head>
+        <title>Hexagonal TodoMVC</title>
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <link rel="stylesheet" href="//netdna.bootstrapcdn.com/bootstrap/3.0.3/css/bootstrap.min.css">
     </head>
     <body>
-        <ul>
-            <li><a href="/angular/index.html">Angular</a></li>
-            <li><a href="/angular-moobile/index.html">Angular Mobile</a></li>
-        </ul>
+        <section class="container">
+            <header>
+                <h1>Hexagonal TodoMVC</h1>
+            </header>
+
+            <article class="col-md-8">
+                <p>What is hexagonal architecture?</p>
+
+                <blockquote>
+                    Create your application to work without either a UI or a
+                    database so you can run automated regression-tests against
+                    the application, work when the database becomes unavailable,
+                    and link applications together without any user involvement.
+                </blockquote>
+
+                <p>
+                    Read more about it from
+                    <a href="http://blog.8thlight.com/uncle-bob/2012/08/13/the-clean-architecture.html">Uncle Bob</a>
+                    and
+                    <a href="http://alistair.cockburn.us/Hexagonal+architecture">Alistair Cockburn</a>
+                </p>
+
+                <p>
+                    The core business logic is bundled into a
+                    <a href="/todomvc.js">single javascript library</a>
+                    <a href="/todomvc.storage.js">local storage</a> as the data
+                    source.  You can see how we can easily swap out the storage to say
+                    <a href="http://firebase.com">Firebase</a> or a custom REST api.
+                    Or switch to <a href="">EmberJS</a> or create a mobile version
+                    that doesn't lose the hard work of the main site.
+                </p>
+            </article>
+
+            <aside class="col-md-4">
+                <h4>Examples</h4>
+                <ul>
+                    <li><a href="/angular/index.html">Angular</a></li>
+                    <li><a href="/ionic/index.html">Ionic</a></li>
+                </ul>
+            </aside>
+        </section>
     </body>
 </html>
 

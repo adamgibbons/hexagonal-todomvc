@@ -15,8 +15,12 @@
   ],
   "dependencies": {
     "angular": "1.2.8",
+    "angular-animate": "1.2.8",
     "angular-route": "1.2.8",
-    "todomvc-common": "~0.1.4"
+    "angular-touch": "1.2.8",
+    "animate.css": "3.0.0",
+    "todomvc-common": "~0.1.4",
+    "bootstrap": "~3.0.3"
   },
   "devDependencies": {
     "expect": "~0.2.0"
